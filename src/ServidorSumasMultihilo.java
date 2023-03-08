@@ -6,8 +6,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
 
+/**
+ * Servidor Multihilo, dos jugadores sin competir.
+ */
 public class ServidorSumasMultihilo {
-
     public static void main(String[] args) {
         System.out.println(
                 "\n*************************************\n*   Juego de las Sumas 2DAM 2023   *\n*************************************\n");
@@ -16,6 +18,7 @@ public class ServidorSumasMultihilo {
 
             while (true) {
                 try {
+                    // Crea un nuevo hilo
                     new Thread(new HiloServidor(serverSocket.accept())).start();
                 } catch (SocketTimeoutException e) {
                     e.printStackTrace();
